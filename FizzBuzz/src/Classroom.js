@@ -11,6 +11,11 @@ function Classroom(size) {
 Classroom.prototype.sayNumber = function(number) {
 	if (this.students[number].isFizz()) {
 		return 'Fizz';
+	} else if (this.students[number].isBuzz()){
+		return 'Buzz';
+	} else if(this.students[number].isFizzBuzz()) {
+		return 'FizzBuzz'
+	} else {
+		return number;
 	}
-	
 };

@@ -29,6 +29,18 @@ describe("Classroom", function() {
     it("should say 'Fizz' if is a Fizz number", function() {
       	expect(classroom.sayNumber(3)).toEqual('Fizz');
     });
+
+    it("should say 'Buzz' if is a Buzz number", function() {
+      	expect(classroom.sayNumber(5)).toEqual('Buzz');
+    });
+
+    it("should say 'FizzBuzz' if is a FizzBuzz number" , function() {
+      	expect(classroom.sayNumber(15)).toEqual('FizzBuzz');
+    });
+
+    it("should say his/her number otherwise" , function() {
+      	expect(classroom.sayNumber(2)).toEqual(2);
+    });
   });
 
 });
