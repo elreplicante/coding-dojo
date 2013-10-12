@@ -20,7 +20,6 @@ describe("Student", function(){
 
 	});
 
-
 	describe("when student number is divisible by 5", function(){
 		beforeEach(function(){
 			student = new Student(5);
@@ -74,6 +73,4 @@ describe("Student", function(){
 			expect(student.isFizzBuzz()).toBe(false);
 		});
 	});
-
-	
 });
