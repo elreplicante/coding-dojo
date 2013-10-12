@@ -23,4 +23,12 @@ describe("Classroom", function() {
   	});
   });
 
+
+  describe("when a student is asked for his/her number", function() {
+
+    it("should say 'Fizz' if is a Fizz number", function() {
+      	expect(classroom.sayNumber(3)).toEqual('Fizz');
+    });
+  });
+
 });

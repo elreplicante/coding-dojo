@@ -7,3 +7,10 @@ function Classroom(size) {
 		this.students[i] = new Student(i);
 	}
 }
+
+Classroom.prototype.sayNumber = function(number) {
+	if (this.students[number].isFizz()) {
+		return 'Fizz';
+	}
+	
+};
