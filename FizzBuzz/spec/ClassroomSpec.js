@@ -3,43 +3,40 @@ describe("Classroom", function() {
 
   describe("when a classroom is built with no students", function() {
 
-  	beforeEach(function() {
-    	classroom = new Classroom();
-  	});
-
     it("should have 0 students", function() {
-      expect(classroom.students.length).toEqual(0);
+		classroom = new Classroom();
+      	expect(classroom.students.length).toEqual(0);
     });
   });
 
   describe("when a classroom is built", function() {
  
-    beforeEach(function() {
-    	classroom = new Classroom(100);
-  	});
-
     it("should have the right number of students", function() {
+    	classroom = new Classroom(100);
   		expect(classroom.students.length).toEqual(100);
   	});
   });
 
-
   describe("when a student is asked for his/her number", function() {
 
     it("should say 'Fizz' if is a Fizz number", function() {
-      	expect(classroom.sayNumber(3)).toEqual('Fizz');
+    	var fizzNumber = 3;
+      	expect(classroom.sayNumber(fizzNumber)).toEqual('Fizz');
     });
 
     it("should say 'Buzz' if is a Buzz number", function() {
-      	expect(classroom.sayNumber(5)).toEqual('Buzz');
+    	var buzzNumber = 5;
+      	expect(classroom.sayNumber(buzzNumber)).toEqual('Buzz');
     });
 
     it("should say 'FizzBuzz' if is a FizzBuzz number" , function() {
-      	expect(classroom.sayNumber(15)).toEqual('FizzBuzz');
+    	var fizzBuzzNumber = 15;
+      	expect(classroom.sayNumber(fizzBuzzNumber)).toEqual('FizzBuzz');
     });
 
     it("should say his/her number otherwise" , function() {
-      	expect(classroom.sayNumber(2)).toEqual(2);
+    	var number = 4;
+      	expect(classroom.sayNumber(number)).toEqual(number);
     });
   });
 
