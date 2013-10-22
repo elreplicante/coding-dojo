@@ -14,4 +14,16 @@ class Student
 	def isFizzBuzz?
 		@number % 3 == 0 && @number % 5 == 0
 	end
+
+	def say_number
+		if isFizz?
+			'Fizz'
+		elsif isBuzz?
+			'Buzz'
+		elsif isFizzBuzz?
+			'FizzBuzz'
+		else
+			@number
+		end
+	end
 end
