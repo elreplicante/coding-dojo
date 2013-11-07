@@ -59,4 +59,5 @@ DEPENDENCIES
   rb-fsevent
   rb-inotify
   rspec (~> 2.14)
+  rspec-expectations
   rspec-mocks (~> 2.14)
