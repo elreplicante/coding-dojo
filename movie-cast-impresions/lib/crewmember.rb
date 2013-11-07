@@ -17,5 +17,4 @@ class CrewMember
             movie.increase_coolness_factor(@foreign_factor)
         end
     end
-
 end
