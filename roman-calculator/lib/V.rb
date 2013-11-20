@@ -1,9 +1,9 @@
 require "roman_number"
 
-class I < RomanNumber
+class V < RomanNumber
 
   def arabig_value
-    1
+    5
   end
-
+  
 end

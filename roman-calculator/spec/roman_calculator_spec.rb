@@ -20,3 +20,10 @@ describe "Roman number III" do
     expect(roman.t_arabig).to eq 3
   end
 end
+
+describe "Roman number IV" do
+  it "is equivalent to arabig number 4" do
+    roman = I.new(V.new)
+    expect(roman.t_arabig).to eq 4
+  end
+end
