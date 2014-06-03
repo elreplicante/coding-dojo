@@ -1,6 +1,7 @@
 class Student
      def initialize(number)
         @number = number
+        #this is a comment
     end
 
     def isFizz?
