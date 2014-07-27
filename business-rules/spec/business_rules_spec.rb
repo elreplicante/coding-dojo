@@ -1,88 +1,14 @@
-class Processor
-  def self.do payment
-    result = Result.new
-    result.archive send_mail(payment) if payment.generate_mail?
-    result
-  end
+require_relative '../lib/processor'
+require_relative '../lib/payment'
+require_relative '../lib/email'
+require_relative '../lib/packing_slip'
+require_relative '../lib/membership'
+require_relative '../lib/upgrade'
+require_relative '../lib/result'
 
-  private
-  def self.send_mail(payment)
-    Email.new payment.who_to_notify
-  end
-end
-
-class PackingSlip
-  def duplicate?(package)
-    true
-  end
-end
-
-class Result
-
-  def retrieve_shipping
-    PackingSlip.new
-  end
-
-  def retrieve_royalty
-    PackingSlip.new
-  end
-
-  def retrieve_email
-    @mail
-  end
-
-  def archive(mail)
-    @mail = mail
-  end
-end
-
-class Membership
-  def initialize(member)
-    @member = member
-  end
-
-  def is_active?
-    true
-  end
-  def whose
-    @member
-  end
-end
-
-class Upgrade
-  def has_been_applied?
-    true
-  end
-  def whose
-  
-  end  
-end
-
-class Payment
-  def initialize(product)
-    @product = product
-  end
-
-  def generate_mail?
-    return (@product.is_a? Membership) || (@product.is_a? Upgrade)
-  end
-
-  def who_to_notify
-    @product.whose if (@product.is_a? Membership) 
-  end
-
-end
-
-class Email
-  def initialize(to)
-    @to=to
-  end
-  def has_been_sent_to?(name)
-    @to==name
-  end
-end
 
 describe "Processor" do
+
   it "generates a packing slip for shipping for physical products" do
     payment = Payment.new "physical product"
     result = Processor.do payment
@@ -119,6 +45,7 @@ describe "Processor" do
     expect(email.has_been_sent_to?("Owner")).to eq(true)
     expect(email.has_been_sent_to?("not_the_owner")).to eq(false)
   end
+
   it "Sends an e-mail to the owner when the payment is for an upgrade" do
     upgrade = Upgrade.new
     payment = Payment.new upgrade
@@ -126,6 +53,7 @@ describe "Processor" do
     email = result.retrieve_email
     expect(email.has_been_sent_to?(upgrade.whose)).to eq(true)
   end
+
   it "Don't send an email to the owner when the payment is not for an upgrade or membership" do
     payment = Payment.new "other type of product"
     result = Processor.do payment
