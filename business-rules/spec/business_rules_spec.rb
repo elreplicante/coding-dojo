@@ -20,21 +20,21 @@ describe "Processor" do
     payment = Payment.new "Book"
     result = Processor.do payment
     package = result.retrieve_royalty
-    expect(package.duplicate?(result.retrieve_shipping)).to eq(true)
+    expect(package.duplicate?(result.retrieve_shipping)).to be_truthy
   end
 
   it "activates that membership if the payment is for a membership" do
     membership = Membership.new "any member"
     payment = Payment.new membership
     Processor.do payment
-    expect(membership.is_active?).to eq(true)
+    expect(membership.is_active?).to be_truthy
   end
 
   it "Applies the upgrade if the payment is an upgrade to a membership" do
     membership_upgrade = Upgrade.new
     payment = Payment.new membership_upgrade
     Processor.do payment
-    expect(membership_upgrade.has_been_applied?).to eq(true)
+    expect(membership_upgrade.has_been_applied?).to be_truthy
   end
 
   it "Sends an e-mail to the owner when the payment is for a membership" do
@@ -43,7 +43,7 @@ describe "Processor" do
     result = Processor.do payment
     email = result.retrieve_email
     expect(email.has_been_sent_to?("Owner")).to eq(true)
-    expect(email.has_been_sent_to?("not_the_owner")).to eq(false)
+    expect(email.has_been_sent_to?("not_the_owner")).to be_falsy
   end
 
   it "Sends an e-mail to the owner when the payment is for an upgrade" do
@@ -51,7 +51,7 @@ describe "Processor" do
     payment = Payment.new upgrade
     result = Processor.do payment
     email = result.retrieve_email
-    expect(email.has_been_sent_to?(upgrade.whose)).to eq(true)
+    expect(email.has_been_sent_to?(upgrade.whose)).to be_truthy
   end
 
   it "Don't send an email to the owner when the payment is not for an upgrade or membership" do
