@@ -19,4 +19,15 @@ describe('Stack', function () {
 
     expect(stack.currentSize()).toEqual(1);
   });
+
+  it('overflows on push if stack is full', function () {
+    var stack = new Stack(1);
+    stack.push('element');
+    
+    expect(
+      function(){
+        stack.push('other element');
+      }
+    ).toThrowError('Stack overflow');
+  });
 });

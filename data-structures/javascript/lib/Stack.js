@@ -13,6 +13,9 @@ module.exports = function(maxSize) {
     },
 
     push: function() {
+      if (currentSize == maxSize) {
+        throw new Error('Stack overflow');
+      };
       currentSize++;
     }
   }
