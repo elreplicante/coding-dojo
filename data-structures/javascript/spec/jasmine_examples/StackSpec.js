@@ -13,14 +13,14 @@ describe('Stack', function () {
     expect(stack.currentSize()).toEqual(0);
   });
 
-  it('increments its size on push', function () {
+  it('adds an element on push', function () {
     var stack = new Stack(3);
     stack.push('element');
 
     expect(stack.currentSize()).toEqual(1);
   });
 
-  it('overflows on push if stack is full', function () {
+  it('overflows on push if full', function () {
     var stack = new Stack(1);
     stack.push('element');
     
@@ -29,5 +29,20 @@ describe('Stack', function () {
         stack.push('other element');
       }
     ).toThrowError('Stack overflow');
+  });
+
+  it('returns the last element on pop', function () {
+    var stack = new Stack(5);
+    stack.push('element');
+
+    expect(stack.pop()).toEqual('element');
+    expect(stack.currentSize()).toEqual(0);
+  });
+
+  it('underflows on pop if empty', function (done) {
+    var stack = new Stack(5);
+    var pop = function(){ stack.pop(); }
+
+    expect(pop).toThrowError('Stack underflow');
   });
 });
