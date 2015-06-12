@@ -3,12 +3,14 @@ module.exports = function(maxSize) {
   var currentSize = 0;
   var elements = new Array(maxSize);
 
+  const underflowLimit = 0;
+
   function _checkOverflow() {
     if (currentSize == maxSize) throw new Error('Stack overflow');
   }
 
   function _checkUnderflow() {
-    if (currentSize === 0) throw new Error('Stack underflow');
+    if (currentSize === underflowLimit) throw new Error('Stack underflow');
   }
 
   return {
