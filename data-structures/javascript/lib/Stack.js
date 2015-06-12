@@ -10,6 +10,10 @@ module.exports = function(maxSize) {
 
     currentSize: function() {
       return currentSize;
+    },
+
+    push: function() {
+      currentSize++;
     }
   }
 };

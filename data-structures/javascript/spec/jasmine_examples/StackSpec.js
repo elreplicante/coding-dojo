@@ -12,4 +12,11 @@ describe('Stack', function () {
 
     expect(stack.currentSize()).toEqual(0);
   });
+
+  it('increments its size on push', function () {
+    var stack = new Stack(3);
+    stack.push('element');
+
+    expect(stack.currentSize()).toEqual(1);
+  });
 });
