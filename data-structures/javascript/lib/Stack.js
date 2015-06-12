@@ -1,9 +1,15 @@
-module.exports = function(size) {
-  var maxSize = size;
+module.exports = function(maxSize) {
+  var maxSize = maxSize;
+  var currentSize = 0;
+
 
   return {
-    size: function() {
+    maxSize: function() {
       return maxSize;
+    },
+
+    currentSize: function() {
+      return currentSize;
     }
   }
 };
