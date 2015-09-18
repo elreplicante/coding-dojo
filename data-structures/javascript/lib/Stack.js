@@ -6,7 +6,7 @@ module.exports = function(maxSize) {
   const underflowLimit = 0;
 
   function _checkOverflow() {
-    if (currentSize == maxSize) throw new Error('Stack overflow');
+    if (currentSize === maxSize) throw new Error('Stack overflow');
   }
 
   function _checkUnderflow() {
